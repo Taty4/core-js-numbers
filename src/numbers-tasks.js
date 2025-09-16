@@ -106,8 +106,13 @@ function getLinearEquationRoot(a, b) {
  *   (0,-1) (1,0)    => π/2
  *   (0,1) (0,1)     => 0
  */
-function getAngleBetweenVectors(/* x1, y1, x2, y2 */) {
-  throw new Error('Not implemented');
+function getAngleBetweenVectors(x1, y1, x2, y2) {
+  const scalarProductOfVectors = x1 * x2 + y1 * y2;
+  const firstVectorLength = Math.sqrt(x1 ** 2 + y1 ** 2);
+  const secondVectorLength = Math.sqrt(x2 ** 2 + y2 ** 2);
+  const productVectorLengths = firstVectorLength * secondVectorLength;
+  const cosOfAngle = scalarProductOfVectors / productVectorLengths;
+  return Math.acos(cosOfAngle);
 }
 
 /**
@@ -303,8 +308,13 @@ function getSumToN(n) {
  *   202 => 4  // (2+0+2)
  *   5   => 5  // 5
  */
-function getSumOfDigits(/* num */) {
-  throw new Error('Not implemented');
+function getSumOfDigits(num) {
+  const string = num.toString();
+  let result = 0;
+  for (let i = 0; i < string.length; i += 1) {
+    result += +string[i];
+  }
+  return result;
 }
 
 /**
@@ -318,8 +328,15 @@ function getSumOfDigits(/* num */) {
  *   16  => true
  *   15  => false
  */
-function isPowerOfTwo(/* num */) {
-  throw new Error('Not implemented');
+function isPowerOfTwo(num) {
+  let intermedNumber = num;
+  do {
+    intermedNumber /= 2;
+    if (!Number.isInteger(intermedNumber)) {
+      return false;
+    }
+  } while (intermedNumber > 1);
+  return true;
 }
 
 /**
